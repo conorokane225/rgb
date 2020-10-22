@@ -17,7 +17,7 @@ init();
 function init(){
 	setupModeButtons();
 	setupSquares();
-	var lsScore = localStorage.getItem('score');
+	var lsScore = sessionStorage.getItem('score');
 	if( lsScore !== null ){
 		score = lsScore; 
 		scoreDisplay.textContent = score;
@@ -25,7 +25,7 @@ function init(){
 	else {
 		localStorage.setItem('score', score); 
 	}
-	reset();
+	reset(); //updates score
 }
 
 function setupModeButtons(){
@@ -38,7 +38,7 @@ function setupModeButtons(){
 			reset();
 		});
 	}
-}
+} //changes number of squares for easy mode
 
 function setupSquares(){
 	for(var i = 0; i < squares.length; i++){
@@ -110,7 +110,7 @@ function reset(){
 			squares[i].style.display = "none";
 		}
 	}
-	h1.style.background = "steelblue";
+	h1.style.background = "steelblue"; //matches correct color block with background
 }
 
 resetButton.addEventListener("click", function(){
@@ -150,4 +150,4 @@ function randomColor(){
 	//pick a "blue" from  0 -255
 	var b = Math.floor(Math.random() * 256);
 	return "rgb(" + r + ", " + g + ", " + b + ")";
-}
+} //randomizer that brings in different reds greens and blues to buttons
